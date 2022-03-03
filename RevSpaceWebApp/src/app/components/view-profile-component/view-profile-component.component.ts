@@ -44,4 +44,13 @@ export class ViewProfileComponentComponent implements OnInit {
     
   // }
 
+  follow() {
+    const authToken:string = this.loginUser.getLoginInfo().authToken;
+    const myHeaders:HttpHeaders = new HttpHeaders({
+    'Authorization': authToken
+      });
+    this.userHTTP.followUser(this.user.userId, this.loginUser.getLoginInfo().user, myHeaders)
+
+  }
+
 }
