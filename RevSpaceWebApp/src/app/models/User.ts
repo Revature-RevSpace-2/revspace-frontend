@@ -20,17 +20,10 @@ export class User {
         lastName: string,       
         githubUsername: string,
         title: string,
-<<<<<<< HEAD
-        location: string, 
-        aboutMe: string,
-        followers?: number[],
-        following?: number[] )
-=======
         location: string,
         aboutMe: string,
         birthday?: number,
         revatureJoinDate?: number)
->>>>>>> 9e00cdce2db29f0659e218455b13c3d09bef6451
         {
             this.userId = userId;
             this.email = email;
@@ -41,12 +34,7 @@ export class User {
             this.title = title;
             this.location = location;
             this.aboutMe = aboutMe;
-<<<<<<< HEAD
-            this.followers = followers;
-            this.following = following;
-=======
             this.revatureJoinDate = revatureJoinDate;
->>>>>>> 9e00cdce2db29f0659e218455b13c3d09bef6451
     }
 
  
