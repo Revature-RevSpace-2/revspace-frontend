@@ -23,12 +23,12 @@ export class ViewProfileComponentComponent implements OnInit {
     const routeParams = this.route.snapshot.paramMap;
     const userid = Number(routeParams.get('userId'));
     console.log(userid);
-    const authToken:string = this.loginUser.getLoginInfo().authToken;
-    const myHeaders:HttpHeaders = new HttpHeaders({
+    const authToken: string = this.loginUser.getLoginInfo().authToken;
+    const myHeaders: HttpHeaders = new HttpHeaders({
       'Authorization': authToken
     });
-    this.userHTTP.getUserById(userid,myHeaders).subscribe(
-      (response)=> {
+    this.userHTTP.getUserById(userid, myHeaders).subscribe(
+      (response) => {
         console.log(response);
         this.user = response;
       }
@@ -41,23 +41,23 @@ export class ViewProfileComponentComponent implements OnInit {
 
   // }
   // getUser(): User{
-    
+
   // }
 
   follow() {
-    const authToken:string = this.loginUser.getLoginInfo().authToken;
-    const myHeaders:HttpHeaders = new HttpHeaders({
-    'Authorization': authToken
-      });
+    const authToken: string = this.loginUser.getLoginInfo().authToken;
+    const myHeaders: HttpHeaders = new HttpHeaders({
+      'Authorization': authToken
+    });
     this.userHTTP.followUser(this.user.userId, this.loginUser.getLoginInfo().user, myHeaders).subscribe(
       (response) => {
-        if(null != response) {
+        if (null != response) {
           //As long as the response isn't null, the operation succeeded
           //Set the user info in the front end to the new data (to avoid an extra backend call)
           //Go the user profile page
           this.router.navigate(["viewprofile/" + this.user.userId]);
-      }
-    });
+        }
+      });
 
   }
 
