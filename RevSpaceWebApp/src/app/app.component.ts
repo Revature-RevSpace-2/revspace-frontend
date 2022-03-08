@@ -34,6 +34,13 @@ export class AppComponent implements AfterViewChecked {
     let user = this.loginService.getLoginInfo().user;
     return user.userId;
   }
+      // User=[{}]; 
+  
+  /* getAllUser():string{
+ let user =this.loginService.getLoginInfo().user;
+ return user.firstName+" "+ user.lastName;
+  } */
+
 
   getNotification() {
     let user = this.loginService.getLoginInfo().user;
@@ -54,3 +61,8 @@ export class AppComponent implements AfterViewChecked {
   }
 }
 
+  /* toggleDarkTheme(): void {
+    document.body.classList.toggle('dark-theme');
+} */
+
+}

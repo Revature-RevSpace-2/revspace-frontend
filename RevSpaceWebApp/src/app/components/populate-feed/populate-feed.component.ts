@@ -42,11 +42,11 @@ export class PopulateFeedComponent implements OnInit {
   postUtil: Array<PostUtilObj> = this.newPostService.postUtil;
   lastLoadTime: number = 0;
   like: Like;
-  allLikes: Array<Like>;
+  allLikes: Array<Like> = [];
+  user: User = this.loginService.getLoginInfo().user;
   stringmessage:string;
   notificationModel:NotificationsModel;
-  user: User = this.loginService.getLoginInfo().user;
-
+  
   /*
   postUtil is an array where each element is an object with the following attributes:
     - postId
@@ -60,13 +60,11 @@ export class PopulateFeedComponent implements OnInit {
       this.postHttpService.getTenPosts(oldestId).subscribe(
         (response) => {
   
-  
           if(response.status == 200){ //Okay
             
             this.pclArray = response.body;
   
             this.populateArrays(this.pclArray);
-  
   
           }else if (response.status == 204){ //No more posts to display
             
@@ -108,6 +106,7 @@ export class PopulateFeedComponent implements OnInit {
     }  
 
     this.calculateLikes(this.pclArray[2]);
+
   }
 
   calculateLikes(likesArray: Array<Post>) {
@@ -128,6 +127,7 @@ export class PopulateFeedComponent implements OnInit {
         // this.getPostUtilObj(likePost).starStyle = "fas fa-star";
         
       }
+
     }
   }
 
