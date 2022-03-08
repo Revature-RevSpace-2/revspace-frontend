@@ -127,7 +127,7 @@ export class PopulateFeedComponent implements OnInit {
         // this.getPostUtilObj(likePost).starStyle = "fas fa-star";
         
       }
-      
+
     }
   }
 
@@ -138,10 +138,9 @@ export class PopulateFeedComponent implements OnInit {
     this.getPostUtilObj(curPost).numLikes ++;
     this.getPostUtilObj(curPost).starStyle = "fas fa-star";
     this.like = new Like(this.loginService.getLoginInfo().user, curPost);
-    this.stringmessage = this.user.firstName + " " + this.user.lastName + " has liked this";
-    console.log(this.stringmessage);
-    this.notificationModel = new NotificationsModel(this.stringmessage, curPost.creatorId);
-    console.log(this.notificationModel)
+    this.stringmessage = this.user.firstName + " " + this.user.lastName + " has liked " + curPost.body;
+    this.notificationModel = new NotificationsModel(this.stringmessage, curPost.creatorId.userId);
+      console.log(this.notificationModel)
     this.notificationService.addNotifications(this.notificationModel).subscribe(
       response =>{
         console.log("worked")
@@ -152,11 +151,11 @@ export class PopulateFeedComponent implements OnInit {
     );
     console.log(this.like);
     // console.log(this.pclArray);
-    /* this.likeHttpService.likePost(this.like).subscribe(
+    this.likeHttpService.likePost(this.like).subscribe(
       (response)=>{console.log(response)
         this.like = null;
       }
-    ) */
+    )
       
     }
   }
@@ -225,11 +224,21 @@ export class PopulateFeedComponent implements OnInit {
 
   submitComment(parentPost: Post) {
 
-    console.log(this.getPostUtilObj(parentPost).potentialComment);
 
     let commentInput = this.document.getElementById("commentInput" + parentPost.postId);
 
     let commentInputElement = commentInput as HTMLInputElement;
+    this.stringmessage = this.user.firstName + " " + this.user.lastName + " has commented on your post/comment " + parentPost.body;
+    this.notificationModel = new NotificationsModel(this.stringmessage, parentPost.creatorId.userId);
+    console.log(this.notificationModel);
+    this.notificationService.addNotifications(this.notificationModel).subscribe(
+      response =>{
+        console.log("worked")
+      },
+      error =>{
+        console.log("failed")
+      }
+    );
 
     let newComment = new Post(this.user, commentInputElement.value, null, 
                     new Date().getTime(), true, parentPost);
