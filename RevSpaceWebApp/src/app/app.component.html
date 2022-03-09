@@ -14,6 +14,12 @@
           <a class="nav-link active" routerLink="postfeed">Post Feed</a>
         </li>
       </ul>
+
+
+      <div class="center">
+        <app-search-bar></app-search-bar>
+      </div>
+
       <div class="dropdown" style="margin-right: 2%;">
         <button class="btn btn-secondary " type="button" id="dropdownMenuButton1"
           data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,8 +46,9 @@
           Hello, {{getUserName()}}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" [routerLink]="['/viewprofile', getUserId()]">View Your Profile</a></li>
-          <li><a class="dropdown-item" [routerLink]="['/editprofile']">Edit Your Profile</a></li>
+          <!-- <li><a class="dropdown-item" [routerLink]="['/viewprofile', getUserId()]">View Your Profile</a></li> -->
+          <li><a class="dropdown-item" [routerLink]="['/editprofile']">Profile</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/changePassword']">Change Password</a></li>
           <li><a class="dropdown-item" href="index.html">Logout</a></li>
         </ul>
       </div>

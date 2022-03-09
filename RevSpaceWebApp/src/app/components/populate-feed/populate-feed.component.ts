@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, HostListener, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Inject, HostListener, ChangeDetectorRef, OnChanges, SimpleChanges } from '@angular/core';
 import { CurrencyPipe, DOCUMENT } from "@angular/common";
 import { Post } from 'src/app/models/Post';
 import { User } from 'src/app/models/User';
@@ -18,7 +18,7 @@ import { NotificationsModel } from 'src/app/models/Notifications';
   templateUrl: './populate-feed.component.html',
   styleUrls: ['./populate-feed.component.css']
 })
-export class PopulateFeedComponent implements OnInit {
+export class PopulateFeedComponent implements OnInit, OnChanges {
 
   constructor(private postHttpService: PostHttpServiceService,
               private likeHttpService: LikeHttpServiceService,
@@ -27,13 +27,21 @@ export class PopulateFeedComponent implements OnInit {
               private notificationService:NotificationsService,
               private router:Router,
               @Inject(DOCUMENT) private document: Document) { }
+  ngOnChanges(changes: SimpleChanges): void {
+    let num: number = 0;
+    for(let propname in changes){
+      console.log("changes = " + propname);
+    }
+  }
 
   ngOnInit(): void {
-
-    // this.posts = [];
-    // this.comments = [];
-    // this.postUtil = [];
+    console.log("onInit");
+    console.log(this.posts);
+    this.posts = [];
+    this.comments = [];
+    this.postUtil = [];
     this.nextTen(0);
+    //this.posts = this.newPostService.posts;
   }
 
   pclArray: Array<Array<Post>> = [];
@@ -42,7 +50,7 @@ export class PopulateFeedComponent implements OnInit {
   postUtil: Array<PostUtilObj> = this.newPostService.postUtil;
   lastLoadTime: number = 0;
   like: Like;
-  allLikes: Array<Like>;
+  allLikes: Array<Like> = [];
   stringmessage:string;
   notificationModel:NotificationsModel;
   user: User = this.loginService.getLoginInfo().user;
@@ -64,7 +72,7 @@ export class PopulateFeedComponent implements OnInit {
           if(response.status == 200){ //Okay
             
             this.pclArray = response.body;
-  
+            console.log(this.pclArray);
             this.populateArrays(this.pclArray);
   
   
@@ -85,7 +93,7 @@ export class PopulateFeedComponent implements OnInit {
 
     
 
-    for (let newPost of this.pclArray[0]) {
+    for (let newPost of pclArray[0]) {
 
       let newPostUtilObj = new PostUtilObj(newPost.postId, 0, "");
 
@@ -93,21 +101,26 @@ export class PopulateFeedComponent implements OnInit {
 
       if(duplicatePosts == 0) {
         this.postUtil.push(new PostUtilObj(newPost.postId, 0, ""));
-
+        
         this.posts.push(newPost);
       }
+
 
       //console.log(newPost.creatorId.firstName);
     }
 
-    for (let newComment of this.pclArray[1]) {
+    console.log("ACTUAL POST")
+    console.log(this.posts)
+
+    for (let newComment of pclArray[1]) {
 
       this.postUtil.push(new PostUtilObj(newComment.postId, 0, ""));
 
       this.comments.push(newComment);
     }  
 
-    this.calculateLikes(this.pclArray[2]);
+    this.calculateLikes(pclArray[2]);
+
   }
 
   calculateLikes(likesArray: Array<Post>) {
@@ -128,6 +141,7 @@ export class PopulateFeedComponent implements OnInit {
         // this.getPostUtilObj(likePost).starStyle = "fas fa-star";
         
       }
+      
     }
   }
 
@@ -174,9 +188,9 @@ export class PopulateFeedComponent implements OnInit {
         return true;
       }
     }
-    return false;
+    //return false;
 
-    // return (this.determineStarStyle(curPost) == "fas fa-star");
+    return (this.determineStarStyle(curPost) == "fas fa-star");
 
   }
 
