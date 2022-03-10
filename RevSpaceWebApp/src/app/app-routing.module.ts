@@ -16,7 +16,8 @@ const routes: Routes = [
   {path: 'viewprofile/:userId', component: ViewProfileComponent},
   {path: 'editprofile', component: EditUserProfileComponent},
   {path: 'changePassword', component: ChangePasswordComponent},
-  {path: 'search-details', component: SearchDetailsComponent }
+  {path: 'search-details', component: SearchDetailsComponent },
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({

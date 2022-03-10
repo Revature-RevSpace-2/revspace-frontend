@@ -52,7 +52,7 @@ export class ChangePasswordComponent implements OnInit {
       this.uServ.changePassword(JSON.stringify(changePasswordJSON)).subscribe(
         response => {
           this.lServ.setUserInfo(response);
-          this.route.navigate(["postfeed"]);
+          this.route.navigate(["login"]);
         }
       )
     }
