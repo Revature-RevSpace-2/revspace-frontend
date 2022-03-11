@@ -61,8 +61,7 @@ export class AppComponent implements AfterViewChecked {
   }
 }
 
-  /* toggleDarkTheme(): void {
-    document.body.classList.toggle('dark-theme');
-} */
+    /* toggleDarkTheme(): void {
+      document.body.classList.toggle('dark-theme');
+  } */
 
-}
