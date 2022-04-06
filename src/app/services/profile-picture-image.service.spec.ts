@@ -12,5 +12,6 @@ describe('ProfilePictureImageService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+    //just do it
   });
 });
