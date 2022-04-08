@@ -21,6 +21,8 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchDetailsComponent } from './components/search-details/search-details.component';
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
+import { ViewGroupsComponent } from './components/view-groups/view-groups.component';
+import { ViewGroupThreadComponent } from './components/view-group-thread/view-group-thread.component';
 
 
 
@@ -39,7 +41,9 @@ import { ViewProfileComponent } from './components/view-profile/view-profile.com
     LeavingEditAlertComponent,
     SearchBarComponent,
     ChangePasswordComponent,
-    SearchDetailsComponent
+    SearchDetailsComponent,
+    ViewGroupsComponent,
+    ViewGroupThreadComponent
   ],
   
   imports: [
