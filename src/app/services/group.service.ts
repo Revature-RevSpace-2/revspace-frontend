@@ -37,9 +37,9 @@ export class GroupService
 
     return this.http.post<GroupThread>(
       this.backendService.getBackendURL() + uriMapping,
-          jsonStr,//JSON.stringify(groupObj),
+          groupObj,
           {headers: this.postHeaders}
-      ).pipe(retry(1), catchError(this.errorHandle));
+      ).pipe(retry(0), catchError(this.errorHandle));
   }
 
   /**************************************************************************/
@@ -52,7 +52,7 @@ export class GroupService
 
     return this.http.put<GroupThread>(
       this.backendService.getBackendURL() + uriMapping,
-          jsonStr,//JSON.stringify(groupObj),
+          groupObj,
           {headers: this.postHeaders}
       ).pipe(retry(1), catchError(this.errorHandle));
   }
@@ -101,5 +101,5 @@ export class GroupService
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  }
+  } // blarg
 }
