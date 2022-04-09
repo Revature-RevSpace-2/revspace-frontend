@@ -21,12 +21,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchDetailsComponent } from './components/search-details/search-details.component';
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
-<<<<<<< HEAD
 import { ViewGroupsComponent } from './components/view-groups/view-groups.component';
 import { ViewGroupThreadComponent } from './components/view-group-thread/view-group-thread.component';
-=======
 import { CreateGroupComponent } from './components/create-group/create-group.component';
->>>>>>> 720dcb9bd00b0ad15804e03181b6d6801fc27f9b
 
 
 
@@ -46,12 +43,9 @@ import { CreateGroupComponent } from './components/create-group/create-group.com
     SearchBarComponent,
     ChangePasswordComponent,
     SearchDetailsComponent,
-<<<<<<< HEAD
     ViewGroupsComponent,
-    ViewGroupThreadComponent
-=======
+    ViewGroupThreadComponent,
     CreateGroupComponent
->>>>>>> 720dcb9bd00b0ad15804e03181b6d6801fc27f9b
   ],
   
   imports: [

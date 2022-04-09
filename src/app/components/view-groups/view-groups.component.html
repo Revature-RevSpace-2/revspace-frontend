@@ -1,9 +1,49 @@
-<div class="modal-body">
-    <div class="mb-3">
-        <label for="searchGroup" class="col-form-label">Search Group:</label>
-        <input type="text" class="form-control" id="searchGroup" placeholder = "searchGroup">
+<!DOCTYPE html>
+<html>
+<body>
+    <div class="container-fluid">
+        <div *ngIf="showGroup">
+            <app-view-group-thread [updateFlag]="showGroup"></app-view-group-thread>
+           
+        </div>
+        <form class="viewGroupsForm" >
+            <table class="table" *ngFor="let group of groups; let i = index;">
+                <tr>
+                    <div class="shadow p-3 mb-5 bg-white rounded">
+                    <div class="row">
+                        <div class="col-2">
+                            <div class="form-control">
+                                <label>Name</label>
+                                <input type="text" class="form-control" readonly value="{{group.groupInfo.groupName}}">
+                            </div>
+                        </div>
+
+                        <div class="col-5">
+                            <div class="form-control">
+                                <label>Description</label>
+                                <input type="text" class="form-control" readonly value="{{group.groupInfo.description}}">
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="form-control">
+                                <label>Interests</label>
+                                <input type="text" class="form-control" readonly value="{{group.groupInfo.interests}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <div class="col-2">
+                            <input type="submit" class="btn btn-dark" (click)="openGroup(i)">
+                        </div>
+                    </div>
+                </div>
+                </tr>
+            </table>
+        </form>
+
     </div>
-</div>
-<button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="background-color: #F26925; color: white; border-radius: 5px; margin: 5px;">
-    Submit
-  </button>
+</body>
+</html>
+
+
+  

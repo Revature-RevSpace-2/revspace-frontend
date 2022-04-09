@@ -22,10 +22,30 @@ export class GroupService
 
   authToken:string = this.loginService.getLoginInfo().authToken; // Get auth token from user
 
+  private currentGroup:GroupThread = null;
+
   postHeaders = new HttpHeaders({
     'Context-Type': 'application/json',
     'Authorization': this.authToken
   });
+
+  /**************************************************************************/
+  // Getters
+
+  getCurrentGroup():GroupThread
+  {
+    return this.currentGroup;
+  }
+
+  /**************************************************************************/
+  // Setters
+  setCurrentGroup( group:GroupThread )
+  {
+    if(group != null || group != undefined)
+      this.currentGroup = group;
+
+    console.log("CurrentGroup was set to: " + this.currentGroup);
+  }
 
   /**************************************************************************/
   // Posts
@@ -84,7 +104,7 @@ export class GroupService
   getAllGroups(): Observable<GroupThread[]>
   {
     return this.http.get<GroupThread[]>(
-      this.backendService.getBackendURL() + uriMapping + "/GetAllGroups"
+      this.backendService.getBackendURL() + uriMapping + "/GetAll"
     );
   }
 

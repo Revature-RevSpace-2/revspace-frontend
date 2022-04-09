@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { GroupThread } from 'src/app/models/group-thread';
 import { GroupService } from 'src/app/services/group.service';
 
 @Component({
@@ -6,24 +7,32 @@ import { GroupService } from 'src/app/services/group.service';
   templateUrl: './view-group-thread.component.html',
   styleUrls: ['./view-group-thread.component.css']
 })
-export class ViewGroupThreadComponent implements OnInit {
+export class ViewGroupThreadComponent implements OnInit, OnChanges {
 
   title: string;
-  groups: any;
-  GroupService: any[];
+  group:GroupThread = null;
+  errMsg:string;
+  //GroupService: any[];
 
+  @Input() updateFlag:boolean;
 
   constructor(public groupService:GroupService) { }
 
-  ngOnInit(): void {
-  
-  this.title = 'groups';
-  this.GroupService=[]
-  this.groups = this.groupService[0];
+  ngOnInit(): void
+  {
+    this.title = 'groups';
+    this.group = this.groupService.getCurrentGroup();
+    //this.groupService.getAllGroups().subscribe((data)=>{ this.groups = data;}, err => this.errMsg = err );
   }
+  ngOnChanges()
+  {
+    this.group = this.groupService.getCurrentGroup();
+    this.updateFlag = false;
   }
-  function searchGroup(searchGroup: any) {
-    throw new Error('Function not implemented.');
+
 }
+
+
+
 
 
