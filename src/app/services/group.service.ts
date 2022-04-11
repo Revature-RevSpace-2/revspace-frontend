@@ -114,6 +114,12 @@ export class GroupService
       this.backendService.getBackendURL() + uriMapping + "/ByUnique"
     );
   }
+  getThreadsByGroupInfo(): Observable<GroupThread[]>
+  {
+    return this.http.get<GroupThread[]>(
+      this.backendService.getBackendURL() + uriMapping + "/GetThreads/" + this.currentGroup.infoId
+    );
+  }
   getGroupsByMembership():Observable<GroupInfo[]>
   {
     return this.http.get<GroupInfo[]>(

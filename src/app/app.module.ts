@@ -25,6 +25,7 @@ import { ViewGroupsComponent } from './components/view-groups/view-groups.compon
 import { ViewGroupThreadComponent } from './components/view-group-thread/view-group-thread.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
 import { JoinGroupComponent } from './components/join-group/join-group.component';
+import { GroupPageComponent } from './components/group-page/group-page.component';
 
 
 
@@ -47,7 +48,8 @@ import { JoinGroupComponent } from './components/join-group/join-group.component
     ViewGroupsComponent,
     ViewGroupThreadComponent,
     CreateGroupComponent,
-    JoinGroupComponent
+    JoinGroupComponent,
+    GroupPageComponent
   ],
   
   imports: [
