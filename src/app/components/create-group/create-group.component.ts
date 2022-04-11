@@ -47,7 +47,7 @@ export class CreateGroupComponent implements OnInit {
     let info:GroupInfo = new GroupInfo(this.groupForm.get('groupName').value, this.groupForm.get('description').value, this.groupForm.get('interests').value, curUser);
 
     console.log("Info -> " + info);
-    let thread:GroupThread = new GroupThread(info, [curUser]);
+    let thread:GroupThread = new GroupThread(info, curUser);
 
     console.log("Thread -> " + thread);
 

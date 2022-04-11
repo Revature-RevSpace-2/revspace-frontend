@@ -24,6 +24,7 @@ import { ViewProfileComponent } from './components/view-profile/view-profile.com
 import { ViewGroupsComponent } from './components/view-groups/view-groups.component';
 import { ViewGroupThreadComponent } from './components/view-group-thread/view-group-thread.component';
 import { CreateGroupComponent } from './components/create-group/create-group.component';
+import { JoinGroupComponent } from './components/join-group/join-group.component';
 
 
 
@@ -45,7 +46,8 @@ import { CreateGroupComponent } from './components/create-group/create-group.com
     SearchDetailsComponent,
     ViewGroupsComponent,
     ViewGroupThreadComponent,
-    CreateGroupComponent
+    CreateGroupComponent,
+    JoinGroupComponent
   ],
   
   imports: [

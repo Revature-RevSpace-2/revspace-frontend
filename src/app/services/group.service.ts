@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { GroupInfo } from '../models/group-info';
 import { GroupThread } from '../models/group-thread';
 import { BackendService } from './backend.service';
 import { LoginService } from './login.service';
@@ -22,7 +23,7 @@ export class GroupService
 
   authToken:string = this.loginService.getLoginInfo().authToken; // Get auth token from user
 
-  private currentGroup:GroupThread = null;
+  private currentGroup:GroupInfo = null;
 
   postHeaders = new HttpHeaders({
     'Context-Type': 'application/json',
@@ -32,14 +33,14 @@ export class GroupService
   /**************************************************************************/
   // Getters
 
-  getCurrentGroup():GroupThread
+  getCurrentGroup():GroupInfo
   {
     return this.currentGroup;
   }
 
   /**************************************************************************/
   // Setters
-  setCurrentGroup( group:GroupThread )
+  setCurrentGroup( group:GroupInfo )
   {
     if(group != null || group != undefined)
       this.currentGroup = group;
@@ -107,7 +108,24 @@ export class GroupService
       this.backendService.getBackendURL() + uriMapping + "/GetAll"
     );
   }
-
+  getAllUniqueGroups(): Observable<GroupThread[]>
+  {
+    return this.http.get<GroupThread[]>(
+      this.backendService.getBackendURL() + uriMapping + "/ByUnique"
+    );
+  }
+  getGroupsByMembership():Observable<GroupInfo[]>
+  {
+    return this.http.get<GroupInfo[]>(
+      this.backendService.getBackendURL() + uriMapping + "/ByMembership/" + this.loginService.getLoginInfo().user.userId
+    );
+  }
+  getOtherGroups():Observable<GroupInfo[]>
+  {
+    return this.http.get<GroupInfo[]>(
+      this.backendService.getBackendURL() + uriMapping + "/GetOthers/" + this.loginService.getLoginInfo().user.userId
+    );
+  }
   /**************************************************************************/
   // Utility
   errorHandle(error: { error: { message: string; }; status: any; message: any; }) {

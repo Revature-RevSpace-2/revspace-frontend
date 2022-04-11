@@ -8,36 +8,36 @@
                     <div class="col-2">
                         <div class="form-control">
                             <label>Name:</label>
-                            <input type="text" class="form-control" readonly  value="{{group.groupInfo.groupName}}">
+                            <input type="text" class="form-control" readonly  value="{{group.groupName}}">
                         </div>
                     </div>
                     <div class="col-2">
                         <div class="form-control">
                             <label>Descripton:</label>
-                            <input type="text" class="form-control" readonly  value="{{group.groupInfo.description}}">
+                            <input type="text" class="form-control" readonly  value="{{group.description}}">
                         </div>
                     </div>
                     <div class="col-2">
                         <div class="form-control">
                             <label>Interests:</label>
-                            <input type="text" class="form-control" readonly  value="{{group.groupInfo.interests}}">
+                            <input type="text" class="form-control" readonly  value="{{group.interests}}">
                         </div>
                     </div>
                     <div class="col-2">
                         <div class="form-control">
                             <label>Start Date:</label>
-                            <input type="text" class="form-control" readonly  value="{{group.groupInfo.dateCreated}}">
+                            <input type="text" class="form-control" readonly  value="{{group.dateCreated}}">
                         </div>
                     </div>
                     <div class="col-2">
                         <div class="form-control">
                             <label>Creator:</label>
-                            <input type="text" class="form-control" readonly  value='{{group.groupInfo.owner.firstName + " " + group.groupInfo.owner.lastName}}'>
+                            <input type="text" class="form-control" readonly  value='{{group.owner.firstName + " " + group.owner.lastName}}'>
                         </div>
                     </div>
                     <div class="col-2">
-                        <input type="button" value="join">
-                        <input type="button" value="close">
+                        <input type="button" value="join" (click)="joinGroup()">
+                        <input type="button" value="close" (click)="closeGroup()">
                     </div>
                 </div>
             </div>
