@@ -153,12 +153,7 @@ export class EditUserProfileComponent implements OnInit, DoCheck {
     console.log("###THE USRL IS :"+url);
      this.url= url;
     }); */
-    console.log("####this.currentUser.image"+this.currentUser.image);
-    console.log("####this.currentUser.email"+this.currentUser.email);
 
-    console.log("####this.currentUser.firstName"+this.currentUser.firstName); 
-       console.log("####this.currentUser.userid"+this.currentUser.userId);
-       console.log("####this.currentUser.imageINput"+this.imageURL);
     this.url = this.imageURL
 
     //this.url = "https://i.ibb.co/DRZPdCQ/a3.jpg"

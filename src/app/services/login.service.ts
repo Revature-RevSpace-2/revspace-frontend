@@ -36,7 +36,7 @@ export class LoginService {
     const result = request.subscribe(
       (response)=>{
         this.loginInfo = new LoginInfo(response, authToken);
-        //Added below line (was having issue calling image from table using previous code methods)Adjusted code with line below to show
+        //Added below line (was having issue calling image from table using previous code methods)Adjusted code with line below so profile image would display
         this.loginInfo.user.image = this.loginInfo.user.title;
         this.invalidLogin = false;
         this.router.navigate(['postfeed']);

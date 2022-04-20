@@ -21,8 +21,7 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { SearchDetailsComponent } from './components/search-details/search-details.component';
 import { ViewProfileComponent } from './components/view-profile/view-profile.component';
-import { ProfileImageComponent } from './components/profile-image/profile-image.component';
-import { UploadImageComponent } from './components/upload-image/upload-image.component';
+
 
 
 
@@ -43,9 +42,7 @@ import { UploadImageComponent } from './components/upload-image/upload-image.com
     LeavingEditAlertComponent,
     SearchBarComponent,
     ChangePasswordComponent,
-    SearchDetailsComponent,
-    ProfileImageComponent,
-    UploadImageComponent
+    SearchDetailsComponent
   ],
   
   imports: [
